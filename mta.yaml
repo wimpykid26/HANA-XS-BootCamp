@@ -1,8 +1,14 @@
 ID: HANA-XS-BootCamp
 _schema-version: '2.1'
 version: 0.0.1
-
 modules:
- - name: BootCamp
-   type: html5
-   path: BootCamp
+  - name: BootCamp
+    type: html5
+    path: BootCamp
+    requires:
+      - name: UAA-Service
+resources:
+  - name: UAA-Service
+    type: com.sap.xs.uaa-space
+    parameters:
+      config-path: ./xs-security.json
