@@ -14,6 +14,15 @@ modules:
     requires:
      - name: hdi_db
 
+
+  - name: BootCamp_Server
+    type: nodejs
+    path: BootCamp_Server
+    provides:
+     - name: BootCamp_Server_api
+       properties:
+          url: ${default-url}
+
 resources:
   - name: UAA-Service
     type: com.sap.xs.uaa-space
