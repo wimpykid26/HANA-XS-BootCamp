@@ -7,8 +7,24 @@ modules:
     path: BootCamp
     requires:
       - name: UAA-Service
+
+  - name: db
+    type: hdb
+    path: db
+    requires:
+     - name: hdi_db
+
 resources:
   - name: UAA-Service
     type: com.sap.xs.uaa-space
     parameters:
       config-path: ./xs-security.json
+
+  - name: hdi_db
+    parameters:
+       config:
+          schema: DB
+    properties:
+       hdi-container-name: ${service-name}
+    type: com.sap.xs.hdi-container
+
