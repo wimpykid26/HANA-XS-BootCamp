@@ -7,33 +7,37 @@ modules:
     path: BootCamp
     requires:
       - name: UAA-Service
-
+      - name: BootCamp_Server_api
+        group: destinations
+        properties:
+          name: BootCamp_Server_backend
+          url: '~{url}'
+          forwardAuthToken: true
   - name: db
     type: hdb
     path: db
     requires:
-     - name: hdi_db
-
-
+      - name: hdi_db
   - name: BootCamp_Server
     type: nodejs
     path: BootCamp_Server
     provides:
-     - name: BootCamp_Server_api
-       properties:
-          url: ${default-url}
-
+      - name: BootCamp_Server_api
+        properties:
+          url: '${default-url}'
+    requires:
+      - name: UAA-Service
+      - name: hdi_db
+      - name: db
 resources:
   - name: UAA-Service
     type: com.sap.xs.uaa-space
     parameters:
       config-path: ./xs-security.json
-
   - name: hdi_db
     parameters:
-       config:
-          schema: DB
+      config:
+        schema: DB
     properties:
-       hdi-container-name: ${service-name}
+      hdi-container-name: '${service-name}'
     type: com.sap.xs.hdi-container
-
