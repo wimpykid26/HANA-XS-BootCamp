@@ -10,7 +10,7 @@ modules:
       - name: BootCamp_Server_api
         group: destinations
         properties:
-          name: BootCamp_Server_backend
+          name: BootCamp-Server-backend
           url: '~{url}'
           forwardAuthToken: true
   - name: db

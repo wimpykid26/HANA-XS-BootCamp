@@ -1,5 +1,14 @@
 {
 	"welcomeFile": "index.html",
 	"authenticationMethod": "route",
-	"routes": []
+	"routes": [{
+		"source": "(.*)(.xsjs)",
+		"destination": "BootCamp-Server-backend",
+		"csrfProtection": false,
+		"authenticationType": "xsuaa"
+	}, {
+		"source": "(.*)(.xsodata)",
+		"destination": "BootCamp-Server-backend",
+		"authenticationType": "xsuaa"
+	}]
 }
